@@ -1,0 +1,34 @@
+shinyproxy:
+  apps:
+    - id: 01_sensitive
+      display-name: MyApp1
+      description: Shiny app with restricted access.
+      container-image: openanalytics/shinyproxy-template
+      container-cmd: ["R", "-e", "shiny::runApp('/root/euler')"]
+      access-groups: [onyxia]
+    - id: 02_opendata
+      display-name: MyApp2
+      description: Shiny app without restricted access
+      container-image: openanalytics/shinyproxy-template
+      container-cmd: ["R", "-e", "shiny::runApp('/root/euler')"]
+      access-groups: []
+
+  proxyConfig:
+    authentication:
+      type: openid
+      openid:
+        authURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/auth
+        tokenURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/token
+        jwksURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/certs
+        logoutURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/logout
+        usernameAttribute: email
+        rolesClaim: groups
+        clientCredentialsSecretName: openid-credentials
+
+  ingress:
+    enabled: true
+    tls: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+    hostname: testshinyproxy.lab.sspcloud.fr
