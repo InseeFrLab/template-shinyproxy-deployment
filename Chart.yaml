@@ -1,6 +1,6 @@
 apiVersion: v2
 name: shinyproxy-deployment-template
-version: 0.1.4
+version: 0.1.5
 dependencies:
   - name: shinyproxy
     version: 1.0.4
