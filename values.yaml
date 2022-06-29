@@ -15,7 +15,7 @@ shinyproxy:
 
   proxyConfig:
     authentication:
-      type: openid
+      type: none
       openid:
         authURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/auth
         tokenURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/token
