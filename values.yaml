@@ -16,14 +16,15 @@ shinyproxy:
   proxyConfig:
     authentication:
       type: none
-      openid:
-        authURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/auth
-        tokenURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/token
-        jwksURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/certs
-        logoutURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/logout
-        usernameAttribute: email
-        rolesClaim: groups
-        clientCredentialsSecretName: openid-credentials
+      # type: openid
+      # openid:
+      #   authURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/auth
+      #   tokenURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/token
+      #   jwksURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/certs
+      #   logoutURL: https://auth.lab.sspcloud.fr/auth/realms/sspcloud/protocol/openid-connect/logout
+      #   usernameAttribute: email
+      #   rolesClaim: groups
+      #   clientCredentialsSecretName: openid-credentials
 
   ingress:
     enabled: true
